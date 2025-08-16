@@ -1,0 +1,32 @@
+[project]
+name = "uv-func"
+version = "0.1.0"
+description = "A package to run functions within dedicated UV Python environments."
+readme = "README.md"
+authors = [
+    { name = "Reda Oulbacha", email = "oulbacha.reda@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "cloudpickle>=3.1.1",
+    "portalocker>=3.2.0",
+    "rich>=14.1.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.8.11,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.uv]
+default-groups = "all"
+
+[tool.uv.build-backend]
+module-name = "uv_func"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.12.9",
+]
+test = [
+    "pytest>=8.4.1",
+]

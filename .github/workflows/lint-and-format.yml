@@ -1,0 +1,24 @@
+name: Lint and format
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: "latest"
+          enable-cache: true
+      
+      - name: Lint and format
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+

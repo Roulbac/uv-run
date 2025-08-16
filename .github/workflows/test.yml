@@ -1,0 +1,27 @@
+name: Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python-version: ["3.12"]
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install UV
+      uses: astral-sh/setup-uv@v6
+      with:
+        version: "latest"
+        enable-cache: true
+
+    - name: Run tests
+      run: |
+        uv run pytest -vv tests/
