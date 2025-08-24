@@ -100,7 +100,7 @@ def fetch_bad(url: str):  # Don't do this
 
 ## API Reference
 
-### `@uv_func.run(dependencies, verbose=False)`
+### `@uv_func.run(dependencies, verbose=True)`
 
 - **dependencies** (`list[str]`): Pip-style dependencies (e.g., `["torch==2.0.1", "numpy>=1.20"]`)
 - **verbose** (`bool`): Enable detailed environment setup logs
